@@ -5,50 +5,195 @@
   <title>Amna Database Provider</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Russo+One&display=swap');
+
+    /* Background gradient with subtle 3D animation */
     body {
-      background: radial-gradient(circle at center, #0a0a0a, #1f1f1f);
-      color: #00ff88;
+      margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      text-align: center;
+      background: radial-gradient(circle at center, #0a0a0a, #1f1f1f);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
       padding: 20px;
+      overflow-x: hidden;
+      perspective: 1000px;
     }
+
+    /* Animated floating background shapes */
+    body::before {
+      content: "";
+      position: fixed;
+      top: -150px;
+      left: -150px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(#00ff88, transparent 70%);
+      filter: blur(80px);
+      animation: float1 10s ease-in-out infinite alternate;
+      z-index: 0;
+      border-radius: 50%;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      bottom: -150px;
+      right: -150px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(#007700, transparent 70%);
+      filter: blur(100px);
+      animation: float2 12s ease-in-out infinite alternate;
+      z-index: 0;
+      border-radius: 50%;
+    }
+    @keyframes float1 {
+      0% { transform: translateY(0) translateX(0) scale(1); }
+      100% { transform: translateY(30px) translateX(30px) scale(1.1); }
+    }
+    @keyframes float2 {
+      0% { transform: translateY(0) translateX(0) scale(1); }
+      100% { transform: translateY(-40px) translateX(-40px) scale(1.1); }
+    }
+
+    /* Container with 3D text effect */
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      color: #00ff88;
+      text-align: center;
+      margin: 15px 0 10px 0;
+      text-shadow:
+        0 0 10px #00ff88,
+        0 0 20px #00ff88,
+        0 0 30px #00ff88,
+        0 0 40px #00ff88,
+        0 0 70px #00ff88;
+      transform-style: preserve-3d;
+      perspective: 800px;
+    }
+
+    /* Top big header text with 3D style */
+    .top-header {
+      font-family: 'Russo One', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      text-align: center;
+      color: #00ff88;
+      margin-top: 0;
+      margin-bottom: 5px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-shadow:
+        2px 2px 0 #0f0,
+        4px 4px 5px rgba(0, 255, 136, 0.6);
+      transform: rotateX(15deg) rotateY(10deg);
+      user-select: none;
+    }
+
+    /* Logo styling */
+    .logo {
+      margin-top: 15px;
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 5px #00ff88);
+      transform-style: preserve-3d;
+      /* No rotation */
+      user-select: none;
+    }
+
+    /* Form styling */
+    form {
+      margin-top: 30px;
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      gap: 8px;
+      z-index: 1;
+    }
+
     input {
-      padding: 10px;
+      flex-grow: 1;
+      padding: 12px 16px;
       font-size: 16px;
-      width: 250px;
-      border-radius: 5px 0 0 5px;
+      border-radius: 10px 0 0 10px;
       border: none;
       outline: none;
+      font-family: 'Segoe UI', sans-serif;
     }
     button {
-      padding: 10px 20px;
+      padding: 12px 24px;
       font-size: 16px;
       background-color: #00ff88;
       color: #000;
       border: none;
-      border-radius: 0 5px 5px 0;
+      border-radius: 0 10px 10px 0;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
     button:hover {
       background-color: #00cc66;
     }
+
+    /* WhatsApp channel container */
+    .whatsapp-channel {
+      margin-top: auto;
+      text-align: center;
+      padding: 30px 20px 10px 20px;
+      user-select: none;
+      z-index: 1;
+    }
+    .whatsapp-channel div {
+      color: #00ff88;
+      font-weight: 700;
+      font-size: 18px;
+      margin-bottom: 10px;
+      text-shadow: 0 0 6px #00ff88;
+    }
+    .whatsapp-channel img {
+      width: 80px;
+      height: 80px;
+      cursor: pointer;
+      filter: drop-shadow(0 0 8px #00ff88);
+      transition: transform 0.3s ease;
+    }
+    .whatsapp-channel img:hover {
+      transform: scale(1.1);
+    }
+    .footer-text {
+      margin-top: 12px;
+      color: #aaa;
+      font-size: 14px;
+      user-select: none;
+    }
+
+    /* Result area style */
     #result {
-      margin-top: 25px;
-      white-space: pre-wrap;
-      font-size: 16px;
-      color: #0f0;
-      min-height: 150px;
+      margin-top: 20px;
+      max-width: 420px;
       background: #111;
       padding: 15px;
       border-radius: 8px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+      font-family: monospace;
+      color: #0f0;
+      min-height: 100px;
+      white-space: pre-wrap;
+      text-align: left;
+      user-select: text;
     }
   </style>
 </head>
 <body>
+  <div class="top-header">『𝑨𝑴𝑵𝑨 𝑹𝑨𝑱𝑷𝑶𝑶𝑻』💀 𝑫𝑨𝑹𝑲 ⚠️ 𝑯𝑨𝑪𝑲𝑬𝑹 👾<br>GIFT FOR MY CHANNEL MEMBERS</div>
+
+  <img class="logo" src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Logo" />
+
   <h1>Amna Database Provider</h1>
+
   <form id="searchForm">
     <input type="text" id="number" placeholder="Enter Phone Number e.g. 03001234567" />
     <button type="submit">Search SIM Data</button>
@@ -56,6 +201,39 @@
 
   <div id="result"></div>
 
-  <script src="script.js"></script>
+  <div class="whatsapp-channel">
+    <div>Join my WhatsApp Channel</div>
+    <a href="https://whatsapp.com/channel/0029VbAWsffEgGfIX4DUDh08" target="_blank" rel="noopener">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Channel" />
+    </a>
+    <div class="footer-text">Powered by Amna</div>
+  </div>
+
+  <script>
+    document.getElementById('searchForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const number = document.getElementById('number').value.trim();
+      if (!number) {
+        alert('Please enter a phone number.');
+        return;
+      }
+
+      const resultDiv = document.getElementById('result');
+      resultDiv.textContent = 'Loading...';
+
+      fetch(`/api/simdata?num=${encodeURIComponent(number)}`)
+        .then(res => {
+          if (!res.ok) throw new Error('API request failed');
+          return res.text();
+        })
+        .then(data => {
+          resultDiv.textContent = data;
+        })
+        .catch(err => {
+          resultDiv.textContent = 'Error fetching data: ' + err.message;
+        });
+    });
+  </script>
 </body>
 </html>
