@@ -4,9 +4,8 @@
   <meta charset="UTF-8" />
   <title>Amna Database Provider</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Russo+One&display=swap');
-
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -17,48 +16,7 @@
       align-items: center;
       min-height: 100vh;
       padding: 20px;
-      overflow-x: hidden;
-      perspective: 1000px;
     }
-
-    body::before {
-      content: "";
-      position: fixed;
-      top: -150px;
-      left: -150px;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(#00ff88, transparent 70%);
-      filter: blur(80px);
-      animation: float1 10s ease-in-out infinite alternate;
-      z-index: 0;
-      border-radius: 50%;
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-      bottom: -150px;
-      right: -150px;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(#007700, transparent 70%);
-      filter: blur(100px);
-      animation: float2 12s ease-in-out infinite alternate;
-      z-index: 0;
-      border-radius: 50%;
-    }
-
-    @keyframes float1 {
-      0% { transform: translateY(0) translateX(0) scale(1); }
-      100% { transform: translateY(30px) translateX(30px) scale(1.1); }
-    }
-
-    @keyframes float2 {
-      0% { transform: translateY(0) translateX(0) scale(1); }
-      100% { transform: translateY(-40px) translateX(-40px) scale(1.1); }
-    }
-
     h1 {
       font-family: 'Orbitron', sans-serif;
       font-weight: 700;
@@ -66,66 +24,31 @@
       color: #00ff88;
       text-align: center;
       margin: 15px 0 10px 0;
-      text-shadow:
-        0 0 10px #00ff88,
-        0 0 20px #00ff88,
-        0 0 30px #00ff88,
-        0 0 40px #00ff88,
-        0 0 70px #00ff88;
+      text-shadow: 0 0 10px #00ff88;
     }
-
     .top-header {
       font-family: 'Russo One', sans-serif;
-      font-weight: 700;
       font-size: 24px;
       text-align: center;
       color: #00ff88;
-      margin-top: 0;
-      margin-bottom: 5px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      text-shadow:
-        2px 2px 0 #0f0,
-        4px 4px 5px rgba(0, 255, 136, 0.6);
-      user-select: none;
+      margin: 10px 0;
     }
-
-    .logo {
-      margin-top: 15px;
-      width: 100px;
-      height: 100px;
-      object-fit: contain;
-      filter: drop-shadow(0 0 5px #00ff88);
-      user-select: none;
-    }
-
-    /* New circle image (no rotation) */
-    .circle-image {
-      margin-top: 20px;
+    .circle-img {
       width: 100px;
       height: 100px;
       border-radius: 50%;
-      overflow: hidden;
-      border: 3px solid #00ff88;
-      box-shadow: 0 0 12px #00ff88;
-    }
-
-    .circle-image img {
-      width: 100%;
-      height: 100%;
       object-fit: cover;
-      display: block;
+      margin: 15px;
+      border: 3px solid #00ff88;
+      box-shadow: 0 0 10px #00ff88;
     }
-
     form {
       margin-top: 30px;
       width: 100%;
       max-width: 420px;
       display: flex;
       gap: 8px;
-      z-index: 1;
     }
-
     input {
       flex-grow: 1;
       padding: 12px 16px;
@@ -134,7 +57,6 @@
       border: none;
       outline: none;
     }
-
     button {
       padding: 12px 24px;
       font-size: 16px;
@@ -144,78 +66,38 @@
       border-radius: 0 10px 10px 0;
       cursor: pointer;
     }
-
-    button:hover {
-      background-color: #00cc66;
-    }
-
     .whatsapp-channel {
       margin-top: auto;
       text-align: center;
       padding: 30px 20px 10px 20px;
-      user-select: none;
-      z-index: 1;
     }
-
     .whatsapp-channel div {
       color: #00ff88;
       font-weight: 700;
       font-size: 18px;
-      margin-bottom: 10px;
-      text-shadow: 0 0 6px #00ff88;
     }
-
     .whatsapp-channel img {
       width: 80px;
       height: 80px;
-      cursor: pointer;
-      filter: drop-shadow(0 0 8px #00ff88);
-      transition: transform 0.3s ease;
     }
-
-    .whatsapp-channel img:hover {
-      transform: scale(1.1);
-    }
-
     .footer-text {
-      margin-top: 12px;
       color: #aaa;
       font-size: 14px;
-      user-select: none;
-    }
-
-    .result-box {
-      margin-top: 20px;
-      padding: 10px 15px;
-      background-color: #111;
-      border: 1px solid #00ff88;
-      border-radius: 10px;
-      max-width: 420px;
-      width: 100%;
-      white-space: pre-line;
-      font-family: monospace;
-      display: none;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
+  <div class="top-header">『𝑨𝑴𝑵𝑨 𝑹𝑨𝑱𝑷𝑶𝑶𝑻』💀 𝑫𝑨𝑹𝑲 ⚠️ 𝑯𝑨𝑪𝑲𝑬𝑹 👾</div>
 
-  <div class="top-header">『𝑨𝑴𝑵𝑨 𝑹𝑨𝑱𝑷𝑶𝑶𝑻』💀 𝑫𝑨𝑹𝑲 ⚠️ 𝑯𝑨𝑪𝑲𝑬𝑹 👾<br>GIFT FOR MY CHANNEL MEMBERS</div>
-
-  <img class="logo" src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Logo" />
-
-  <div class="circle-image">
-    <img src="https://i.postimg.cc/CxqjGzkd/IMG-20250528-WA0134.jpg" alt="Profile" />
-  </div>
+  <img class="circle-img" src="assets/dp.jpg" alt="Profile" />
 
   <h1>Amna Database Provider</h1>
 
-  <form onsubmit="searchSimData(event)">
+  <form id="simForm">
     <input type="text" id="number" placeholder="Enter Phone Number e.g. 03001234567" />
     <button type="submit">Search SIM Data</button>
   </form>
-
-  <div class="result-box" id="resultBox"></div>
 
   <div class="whatsapp-channel">
     <div>Join my WhatsApp Channel</div>
@@ -225,39 +107,6 @@
     <div class="footer-text">Powered by Amna</div>
   </div>
 
-  <script>
-    async function searchSimData(e) {
-      e.preventDefault();
-      const number = document.getElementById("number").value.trim();
-      const resultBox = document.getElementById("resultBox");
-      resultBox.style.display = 'none';
-      resultBox.textContent = "";
-
-      if (!number) {
-        alert("Please enter a phone number.");
-        return;
-      }
-
-      const url = "https://famofc.kesug.com/apis/simdataapi.php?num=" + encodeURIComponent(number);
-
-      try {
-        const res = await fetch(url);
-        if (!res.ok) throw new Error("API request failed");
-
-        const data = await res.json();
-        let output = "";
-
-        for (const key in data) {
-          output += `${key}: ${data[key]}\n`;
-        }
-
-        resultBox.textContent = output;
-        resultBox.style.display = 'block';
-      } catch (err) {
-        alert("Error fetching data: " + err.message);
-      }
-    }
-  </script>
-
+  <script src="sim.js"></script>
 </body>
 </html>
