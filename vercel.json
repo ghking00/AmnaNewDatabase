@@ -1,5 +1,8 @@
 {
   "rewrites": [
-    { "source": "/api/sim", "destination": "/api/sim.js" }
+    {
+      "source": "/api/:match*",
+      "destination": "https://famofc.kesug.com/apis/:match*"
+    }
   ]
 }
