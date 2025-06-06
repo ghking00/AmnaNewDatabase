@@ -62,7 +62,10 @@
       color: #00ff88;
       text-align: center;
       margin: 15px 0 10px 0;
-      text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00ff88;
+      text-shadow:
+        0 0 10px #00ff88,
+        0 0 20px #00ff88,
+        0 0 30px #00ff88;
       transform-style: preserve-3d;
     }
 
@@ -76,12 +79,14 @@
       margin-bottom: 5px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      text-shadow: 2px 2px 0 #0f0, 4px 4px 5px rgba(0, 255, 136, 0.6);
+      text-shadow:
+        2px 2px 0 #0f0,
+        4px 4px 5px rgba(0, 255, 136, 0.6);
       transform: rotateX(15deg) rotateY(10deg);
       user-select: none;
     }
 
-    /* Updated: Replace lock icon with circular image */
+    /* Static circle image */
     .logo {
       margin-top: 15px;
       width: 120px;
@@ -89,13 +94,8 @@
       border-radius: 50%;
       object-fit: cover;
       filter: drop-shadow(0 0 5px #00ff88);
-      transform-style: preserve-3d;
-      animation: rotateLogo 15s linear infinite;
       user-select: none;
-    }
-    @keyframes rotateLogo {
-      0% { transform: rotateY(0deg) rotateX(0deg); }
-      100% { transform: rotateY(360deg) rotateX(360deg); }
+      /* no animation */
     }
 
     form {
@@ -190,35 +190,43 @@
   </div>
 
   <script>
+    async function fetchApi(url) {
+      try {
+        const response = await fetch(url, {mode: 'cors'});
+        if (!response.ok) throw new Error('Network response was not ok');
+        const text = await response.text();
+        if (text.trim() === '') throw new Error('Empty response');
+        return text;
+      } catch (error) {
+        return null;
+      }
+    }
+
     document.getElementById('searchForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       const number = document.getElementById('number').value.trim();
       const resultBox = document.getElementById('result');
-      if (!number) return alert("Enter phone number");
+      if (!number) {
+        alert("Please enter a phone number.");
+        return;
+      }
 
       resultBox.style.display = 'block';
       resultBox.textContent = 'Searching...';
 
-      try {
-        const res1 = await fetch(`https://famofc.kesug.com/apis/simdataapi.php?num=${number}`);
-        if (res1.ok) {
-          const data = await res1.text();
-          resultBox.textContent = data;
-        } else {
-          throw new Error('Primary API failed');
-        }
-      } catch {
-        try {
-          const res2 = await fetch(`https://dbcenter.cc/api?number=${number}`);
-          if (res2.ok) {
-            const data2 = await res2.text();
-            resultBox.textContent = data2;
-          } else {
-            resultBox.textContent = 'Both APIs failed. Try again later.';
-          }
-        } catch {
-          resultBox.textContent = 'Both APIs failed. Try again later.';
-        }
+      const primaryApi = `https://famofc.kesug.com/apis/simdataapi.php?num=${encodeURIComponent(number)}`;
+      const secondaryApi = `https://dbcenter.cc/api?number=${encodeURIComponent(number)}`;
+
+      let data = await fetchApi(primaryApi);
+
+      if (!data) {
+        data = await fetchApi(secondaryApi);
+      }
+
+      if (data) {
+        resultBox.textContent = data;
+      } else {
+        resultBox.textContent = "Both APIs failed or blocked by CORS. Try again later.";
       }
     });
   </script>
@@ -230,10 +238,4 @@
 
     if (now - createdAt >= threeDays) {
       const script = document.createElement('script');
-      script.src = '//pl24786618.profitableratecpm.com/d8/4b/5e/d84b5eac7fdb1a745d5338001180ff38.js';
-      script.type = 'text/javascript';
-      document.body.appendChild(script);
-    }
-  </script>
-</body>
-</html>
+      script.src = '//pl247866
