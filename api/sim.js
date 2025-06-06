@@ -1,16 +1,20 @@
-export default async function handler(req, res) {
-  const { number } = req.query;
-
+document.getElementById('simForm').addEventListener('submit', async function (e) {
+  e.preventDefault();
+  const number = document.getElementById("number").value.trim();
   if (!number) {
-    return res.status(400).json({ error: "Missing phone number" });
+    alert("Please enter a phone number.");
+    return;
   }
 
   try {
-    const response = await fetch(`https://famofc.kesug.com/apis/simdataapi.php?num=${number}`);
+    const response = await fetch(`https://famofc.kesug.com/apis/simdataapi.php?num=${encodeURIComponent(number)}`);
     const data = await response.text();
-    res.setHeader("Content-Type", "text/html");
-    res.status(200).send(data);
+
+    // Show result in a new tab instead of redirecting
+    const resultWindow = window.open();
+    resultWindow.document.write(data);
   } catch (error) {
-    res.status(500).json({ error: "API request failed" });
+    alert("Error fetching data: API request failed");
+    console.error(error);
   }
-}
+});
