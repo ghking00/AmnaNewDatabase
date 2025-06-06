@@ -91,22 +91,14 @@
       user-select: none;
     }
 
-    .logo {
-      margin-top: 15px;
-      width: 100px;
-      height: 100px;
-      object-fit: contain;
-      filter: drop-shadow(0 0 5px #00ff88);
-      user-select: none;
-    }
-
     .circle-img {
-      margin: 20px auto 0;
+      margin-top: 15px;
       width: 100px;
       height: 100px;
       border-radius: 50%;
       overflow: hidden;
       border: 3px solid #00ff88;
+      filter: drop-shadow(0 0 8px #00ff88);
     }
 
     .circle-img img {
@@ -183,12 +175,28 @@
       font-size: 14px;
       user-select: none;
     }
+
+    #result {
+      margin-top: 30px;
+      width: 100%;
+      max-width: 600px;
+      padding: 20px;
+      background: #111;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00ff88;
+      display: none;
+    }
+
+    iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      background: #fff;
+    }
   </style>
 </head>
 <body>
   <div class="top-header">『𝑨𝑴𝑵𝑨 𝑹𝑨𝑱𝑷𝑶𝑶𝑻』💀 𝑫𝑨𝑹𝑲 ⚠️ 𝑯𝑨𝑪𝑲𝑬𝑹 👾<br>GIFT FOR MY CHANNEL MEMBERS</div>
-
-  <img class="logo" src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Logo" />
 
   <div class="circle-img">
     <img src="https://i.postimg.cc/CxqjGzkd/IMG-20250528-WA0134.jpg" alt="Profile" />
@@ -200,6 +208,10 @@
     <input type="text" id="number" placeholder="Enter Phone Number e.g. 03001234567" />
     <button type="submit">Search SIM Data</button>
   </form>
+
+  <div id="result">
+    <iframe id="dataFrame"></iframe>
+  </div>
 
   <div class="whatsapp-channel">
     <div>Join my WhatsApp Channel</div>
@@ -213,14 +225,21 @@
     async function searchSim(event) {
       event.preventDefault();
       const number = document.getElementById("number").value.trim();
-      if (!number) return alert("Please enter a phone number.");
+      const frame = document.getElementById("dataFrame");
+      const resultDiv = document.getElementById("result");
+
+      if (!number) {
+        alert("Please enter a phone number.");
+        return;
+      }
 
       try {
         const response = await fetch(`/api/sim?number=${encodeURIComponent(number)}`);
         const html = await response.text();
-        const win = window.open();
-        win.document.write(html);
-        win.document.close();
+        const blob = new Blob([html], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        frame.src = url;
+        resultDiv.style.display = 'block';
       } catch (err) {
         alert("Error fetching data: API request failed");
       }
